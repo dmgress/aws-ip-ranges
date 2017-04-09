@@ -1,54 +1,9 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": {
-    "BucketWriting": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "root",
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": "*",
-              "Resource": [
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:s3:::",
-                      {
-                        "Ref": "IPRangesS3Bucket"
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:s3:::",
-                      {
-                        "Ref": "IPRangesS3Bucket"
-                      },
-                      "/*"
-                    ]
-                  ]
-                }
-              ],
-              "Effect": "Allow"
-            }
-          ]
-        },
-        "Roles": [
-          {
-            "Ref": "IPRangesFnRole"
-          }
-        ]
-      }
-    },
     "IPRangesS3Bucket": {
       "Type": "AWS::S3::Bucket",
-      "Properties": {      }
+      "Properties": {}
     },
     "IPRangesFnRole": {
       "Type": "AWS::IAM::Role",
@@ -69,7 +24,30 @@
               }
             }
           ]
-        }
+        },
+        "ManagedPolicyArns": [ "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" ],
+        "Policies": [
+          {
+            "PolicyName": "root",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": "*",
+                  "Resource": [
+                    {
+                      "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" } ] ]
+                    },
+                    {
+                      "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" }, "/*" ] ]
+                    }
+                  ],
+                  "Effect": "Allow"
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     "Version1": {
