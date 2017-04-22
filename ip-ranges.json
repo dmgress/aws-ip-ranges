@@ -1,6 +1,6 @@
 {
-  "syncToken": "1492737735",
-  "createDate": "2017-04-21-01-22-15",
+  "syncToken": "1492807931",
+  "createDate": "2017-04-21-20-52-11",
   "prefixes": [
     {
       "ip_prefix": "13.32.0.0/15",
@@ -5422,6 +5422,11 @@
     {
       "ipv6_prefix": "2600:1f1e::/36",
       "region": "sa-east-1",
+      "service": "EC2"
+    },
+    {
+      "ipv6_prefix": "2600:1fff:4000::/40",
+      "region": "us-west-2",
       "service": "EC2"
     },
     {
