@@ -86,7 +86,15 @@
         },
         "Protocol": "lambda",
         "TopicArn": {
-          "Ref": "IpRangesSNSTopic"
+          "Fn::Join": [
+            ":",
+            [
+              "arn:aws:sns",
+              {"Ref": "AWS::Region"},
+              {"Ref": "AWSAccountID"},
+              {"Ref": "TopicName"}
+            ]
+          ]
         }
       }
     },
@@ -97,7 +105,17 @@
         "FunctionName": {
           "Ref": "StoreIPRangesFunction"
         },
-        "SourceArn": "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged",
+        "SourceArn": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn:aws:sns",
+              {"Ref": "AWS::Region"},
+              {"Ref": "AWSAccountID"},
+              {"Ref": "TopicName"}
+            ]
+          ]
+        },
         "Principal": "sns.amazonaws.com"
       }
     },
@@ -170,8 +188,19 @@
     }
   },
   "Parameters": {
-    "IpRangesSNSTopic": {
-      "Default": "arn:aws:sns:us-east-1:806199016981:AmazonIpSpaceChanged",
+    "AWSAccountID": {
+      "Default": "806199016981",
+      "MinLength": "12",
+      "MaxLength": "12",
+      "AllowedPattern": "[0-9]+",
+      "ConstraintDescription": "AWS Account ID is exactly 12 numbers",
+      "Description": "AWS account ID where SNS topic is located",
+      "Type": "String"
+    },
+    "TopicName": {
+      "Default": "AmazonIpSpaceChanged",
+      "MinLength": "1",
+      "Description": "Name of the topic",
       "Type": "String"
     }
   }
