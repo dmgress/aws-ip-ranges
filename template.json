@@ -103,7 +103,7 @@
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
-          "Ref": "StoreIPRangesFunction"
+          "Ref": "StoreIPRangesFnProd"
         },
         "SourceArn": {
           "Fn::Join": [
