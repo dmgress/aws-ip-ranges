@@ -1,9 +1,19 @@
 'use strict';
 
 let AWSXRay = require('aws-xray-sdk');
+let url_lib = require('url');
 let https = AWSXRay.captureHTTPs(require('https'));
 let AWS = AWSXRay.captureAWS(require('aws-sdk'));
 let s3 = new AWS.S3();
+
+let reverse = (s) => {
+  var o = '';
+
+  for (var i = s.length - 1; i >= 0; i--)
+    o += s[i];
+
+  return o;
+};
 
 exports.handler = (event, context, callback) => {
   let message = event.Records[0].Sns.Message;
@@ -12,19 +22,20 @@ exports.handler = (event, context, callback) => {
   }
   let url = message.url || "https://ip-ranges.amazonaws.com/ip-ranges.json";
   console.log('Going to fetch ' + url);
-  https.get(url, function (res) {
+  let options = url_lib.parse(url);
+  https.get(options, function (res) {
     res.setEncoding('utf8');
     var rawData = '';
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
-      let parsedData = JSON.parse(rawData);
-      console.log(parsedData);
+      let regexToken = rawData.match(/syncToken[^0-9]+([0-9]+)/)[1];
+      console.log(rawData);
       var params = {
         "Bucket": process.env.S3Bucket,
-        "Key": `ipranges-${parsedData.syncToken}.json`,
+        "Key": `${reverse(regexToken)}-ipranges.json`,
         "Body": rawData
       };
-      s3.putObject(params, function(err, data) {
+      s3.upload(params, function(err, data) {
         if (err) {
           callback(err, err.stack); // an error occurred
         } else {
