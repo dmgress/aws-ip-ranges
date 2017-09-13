@@ -1,6 +1,8 @@
 'use strict';
-let https = require('https');
-let AWS = require('aws-sdk');
+
+let AWSXRay = require('aws-xray-sdk');
+let https = AWSXRay.captureHTTPs(require('https'));
+let AWS = AWSXRay.captureAWS(require('aws-sdk'));
 let s3 = new AWS.S3();
 
 exports.handler = (event, context, callback) => {
@@ -16,7 +18,7 @@ exports.handler = (event, context, callback) => {
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
       let parsedData = JSON.parse(rawData);
-      //console.log(parsedData);
+      console.log(parsedData);
       var params = {
         "Bucket": process.env.S3Bucket,
         "Key": `ipranges-${parsedData.syncToken}.json`,
