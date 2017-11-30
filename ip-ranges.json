@@ -1,6 +1,6 @@
 {
-  "syncToken": "1512011532",
-  "createDate": "2017-11-30-03-12-12",
+  "syncToken": "1512013332",
+  "createDate": "2017-11-30-03-42-12",
   "prefixes": [
     {
       "ip_prefix": "13.32.0.0/15",
@@ -3790,6 +3790,16 @@
     {
       "ip_prefix": "52.94.249.32/28",
       "region": "eu-west-3",
+      "service": "EC2"
+    },
+    {
+      "ip_prefix": "52.94.249.64/28",
+      "region": "us-west-2",
+      "service": "EC2"
+    },
+    {
+      "ip_prefix": "52.94.249.80/28",
+      "region": "us-west-1",
       "service": "EC2"
     },
     {
