@@ -17,11 +17,11 @@ exports.reverse = (s) => {
 
 exports.createS3UploadParams = (bucketname, data) => {
   // The synctoken is unix epoch time, using a regex is faster than parsing JSON :)
-  let regexToken = data.match(/syncToken[^0-9]+([0-9]+)/)[1];
+  let regexToken = data.match(/syncToken\D+([0-9]+)/)[1];
   return {
-    "Bucket": bucketname,
-    "Key": `${exports.reverse(regexToken)}-ipranges.json`,
-    "Body": data
+    Bucket: bucketname,
+    Key: `${exports.reverse(regexToken)}-ipranges.json`,
+    Body: data
   };
 }
 
@@ -39,7 +39,7 @@ exports.handler = (event, context, callback) => {
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
       console.log(rawData);
-      var params = createS3UploadParams(process.env.S3Bucket, rawData);
+      let params = exports.createS3UploadParams(process.env.S3Bucket, rawData);
       s3.upload(params, function (err, data) {
         if (err) {
           callback(err, err.stack); // an error occurred
