@@ -6,7 +6,7 @@ let https = AWSXRay.captureHTTPs(require('https'));
 let AWS = AWSXRay.captureAWS(require('aws-sdk'));
 let s3 = new AWS.S3();
 
-let reverse = (s) => {
+exports.reverse = (s) => {
   var o = '';
 
   for (var i = s.length - 1; i >= 0; i--)
@@ -14,6 +14,16 @@ let reverse = (s) => {
 
   return o;
 };
+
+exports.createS3UploadParams = (bucketname, data) => {
+  // The synctoken is unix epoch time, using a regex is faster than parsing JSON :)
+  let regexToken = data.match(/syncToken[^0-9]+([0-9]+)/)[1];
+  return {
+    "Bucket": bucketname,
+    "Key": `${exports.reverse(regexToken)}-ipranges.json`,
+    "Body": data
+  };
+}
 
 exports.handler = (event, context, callback) => {
   let message = event.Records[0].Sns.Message;
@@ -28,20 +38,15 @@ exports.handler = (event, context, callback) => {
     var rawData = '';
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
-      let regexToken = rawData.match(/syncToken[^0-9]+([0-9]+)/)[1];
       console.log(rawData);
-      var params = {
-        "Bucket": process.env.S3Bucket,
-        "Key": `${reverse(regexToken)}-ipranges.json`,
-        "Body": rawData
-      };
-      s3.upload(params, function(err, data) {
+      var params = createS3UploadParams(process.env.S3Bucket, rawData);
+      s3.upload(params, function (err, data) {
         if (err) {
           callback(err, err.stack); // an error occurred
         } else {
-          callback(null,"success"); // successful response
+          callback(null, "success"); // successful response
         }
       });
     });
   });
-}
+};

@@ -2,6 +2,15 @@
   "dependencies": {
     "aws-xray-sdk": "^1.1.4"
   },
+  "devDependencies": {
+    "aws-sdk": "^2.1115.0",
+    "mocha": "^9.2.2",
+    "nyc": "^15.1.0",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "test": "nyc --reporter=lcov mocha --timeout=3000"
+  },
   "name": "aws-ip-ranges",
   "version": "1.0.0",
   "description": "AWS Lambda function to collect IP ranges",
