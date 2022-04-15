@@ -17,11 +17,11 @@ exports.reverse = (s) => {
 
 exports.createS3UploadParams = (bucketname, data) => {
   // The synctoken is unix epoch time, using a regex is faster than parsing JSON :)
-  let regexToken = data.match(/syncToken\D+([0-9]+)/)[1];
+  let regexToken = data.match(/syncToken\D+(\d+)/)[1];
   return {
     Bucket: bucketname,
     Key: `${exports.reverse(regexToken)}-ipranges.json`,
-    Body: data
+    Body: data,
   };
 }
 
