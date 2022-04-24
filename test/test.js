@@ -1,10 +1,12 @@
-let createS3UploadParams = require("../index").createS3UploadParams;
-let reverse = require("../index").reverse;
-let assert = require("assert");
+const {createS3UploadParams, reverse} = require("../index");
+const assert = require("assert");
 
 describe("Reverse", function () {
   const tests = [
-    { word: "abc", expected: "cba" }
+    { word: "abc", expected: "cba" },
+    { word: "abc ", expected: "cba" }, // removes trailing spaces
+    { word: " abc", expected: "cba" }, // removes leading spaces
+    { word: "ab c", expected: "c ba" }, // keeps spaces between non-space characters
   ];
 
   tests.forEach(({ word, expected }) => {
@@ -15,7 +17,7 @@ describe("Reverse", function () {
 });
 
 describe("CreateS3UploadParams", function () {
-  let ip_ranges_example = {
+  const ip_ranges_example = {
     syncToken: "0123456789",
     createDate: "yyyy-mm-dd-hh-mm-ss",
     prefixes: [
@@ -39,10 +41,11 @@ describe("CreateS3UploadParams", function () {
     { data: "syncToken: A123", expectedKey: "321-ipranges.json" },
     { data: 'syncToken: "0607"', expectedKey: "7060-ipranges.json" },
     { data: JSON.stringify(ip_ranges_example), expectedKey: "9876543210-ipranges.json" }
-  ]
+  ];
+
   tests.forEach(({ data, expectedKey }) => {
     it(`Creates correct object key for the data`, function () {
-      let actual = createS3UploadParams("testbucket", data);
+      const actual = createS3UploadParams("testbucket", data);
       assert.equal(actual.Key, expectedKey);
     });
   });
