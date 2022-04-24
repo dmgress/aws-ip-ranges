@@ -23,7 +23,7 @@ describe("CreateS3UploadParams", function () {
         ip_prefix: "cidr",
         region: "region",
         network_border_group: "network_border_group",
-        service: "subset"
+        service: "subset",
       }
     ],
     ipv6_prefixes: [
@@ -31,13 +31,13 @@ describe("CreateS3UploadParams", function () {
         ipv6_prefix: "cidr",
         region: "region",
         network_border_group: "network_border_group",
-        service: "subset"
+        service: "subset",
       }
-    ]
+    ],
   };
   const tests = [
     { data: "syncToken: A123", expectedKey: "321-ipranges.json" },
-    { data: "syncToken: \"0607\"", expectedKey: "7060-ipranges.json" },
+    { data: 'syncToken: "0607"', expectedKey: "7060-ipranges.json" },
     { data: JSON.stringify(ip_ranges_example), expectedKey: "9876543210-ipranges.json" }
   ]
   tests.forEach(({ data, expectedKey }) => {
