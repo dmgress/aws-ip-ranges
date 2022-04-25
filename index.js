@@ -21,6 +21,7 @@ exports.createS3UploadParams = (bucketname, data) => {
 
 exports.handler = (event, context, callback) => {
   let message = event.Records[0].Sns.Message;
+  const { S3Bucket } = process.env;
   if (typeof message === 'string') {
     message = JSON.parse(message);
   }
@@ -33,7 +34,7 @@ exports.handler = (event, context, callback) => {
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
       console.log(rawData);
-      const params = exports.createS3UploadParams(process.env.S3Bucket, rawData);
+      const params = exports.createS3UploadParams(S3Bucket, rawData);
       s3.upload(params, function (err) {
         if (err) {
           callback(err, err.stack); // an error occurred
