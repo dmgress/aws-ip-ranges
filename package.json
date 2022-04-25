@@ -13,6 +13,9 @@
   },
   "name": "aws-ip-ranges",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "description": "AWS Lambda function to collect IP ranges",
   "main": "index.js",
   "repository": "git@github.com:dmgress/aws-ip-ranges.git",
