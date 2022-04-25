@@ -1,18 +1,18 @@
-const {createS3UploadParams, reverse} = require("../index");
+const { createS3UploadParams, reverse } = require("../index");
 const assert = require("assert");
 
 describe("Reverse", function () {
-  const tests = [
-    { word: "abc", expected: "cba" },
-    { word: "abc ", expected: "cba" }, // removes trailing spaces
-    { word: " abc", expected: "cba" }, // removes leading spaces
-    { word: "ab c", expected: "c ba" }, // keeps spaces between non-space characters
-  ];
-
-  tests.forEach(({ word, expected }) => {
-    it(`reverses ${word} correctly`, function () {
-      assert.equal(reverse(word), expected);
-    });
+  it(`reverses abc correctly`, function () {
+    assert.equal(reverse("abc"), "cba");
+  });
+  it("reverses abc and removes trailing spaces", function () {
+    assert.equal(reverse("abc "), "cba");
+  });
+  it("reverses abc and removes leading spaces", function () {
+    assert.equal(reverse(" abc"), "cba");
+  });
+  it("reverses abc and keeps spaces between non-space characters", function () {
+    assert.equal(reverse("ab c"), "c ba");
   });
 });
 
@@ -40,7 +40,10 @@ describe("CreateS3UploadParams", function () {
   const tests = [
     { data: "syncToken: A123", expectedKey: "321-ipranges.json" },
     { data: 'syncToken: "0607"', expectedKey: "7060-ipranges.json" },
-    { data: JSON.stringify(ip_ranges_example), expectedKey: "9876543210-ipranges.json" }
+    {
+      data: JSON.stringify(ip_ranges_example),
+      expectedKey: "9876543210-ipranges.json",
+    }
   ];
 
   tests.forEach(({ data, expectedKey }) => {

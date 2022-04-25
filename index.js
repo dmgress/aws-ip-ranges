@@ -10,15 +10,14 @@ exports.reverse = (s) => {
   const trimmed = s.trim();
   let o = '';
 
-  for (let i = trimmed.length - 1; i >= 0; i--)
-    o += trimmed[i];
+  for (let i = trimmed.length - 1; i >= 0; i--) o += trimmed[i];
 
   return o;
 };
 
 exports.createS3UploadParams = (bucketname, data) => {
   // The synctoken is unix epoch time, using a regex is faster than parsing JSON :)
-  const [ , regexToken ] = data.match(/syncToken\D+(\d+)/);
+  const [, regexToken] = data.match(/syncToken\D+(\d+)/);
   return {
     Bucket: bucketname,
     Key: `${exports.reverse(regexToken)}-ipranges.json`,
@@ -36,7 +35,7 @@ exports.handler = (event, context, callback) => {
   const options = urllib.parse(url);
   https.get(options, function (res) {
     res.setEncoding('utf8');
-    let rawData = '';
+    let rawData = "";
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {
       console.log(rawData);
