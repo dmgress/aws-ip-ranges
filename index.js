@@ -7,12 +7,7 @@ const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const s3 = new AWS.S3();
 
 exports.reverse = (s) => {
-  const trimmed = s.trim();
-  let o = '';
-
-  for (let i = trimmed.length - 1; i >= 0; i--) o += trimmed[i];
-
-  return o;
+  return s.trim().split("").reverse().join("");
 };
 
 exports.createS3UploadParams = (bucketname, data) => {
