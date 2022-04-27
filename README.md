@@ -1,5 +1,7 @@
 # AWS IP ranges processing
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cf32f428e46b44a5aadf0789293dad49)](https://app.codacy.com/gh/dmgress/aws-ip-ranges?utm_source=github.com&utm_medium=referral&utm_content=dmgress/aws-ip-ranges&utm_campaign=Badge_Grade_Settings)
+
 The template provisions a working stack to store the AWS IP ranges JSON file in a S3 bucket using AWS Lambda.
 
 ## How to deploy
