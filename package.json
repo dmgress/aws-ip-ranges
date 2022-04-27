@@ -27,5 +27,6 @@
   "repository": "git@github.com:dmgress/aws-ip-ranges.git",
   "author": "Daniel Gressmann <dmgressmann@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "packageManager": "yarn@3.2.0"
 }
