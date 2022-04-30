@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const AWSXRay = require('aws-xray-sdk');
-const https = AWSXRay.captureHTTPs(require('https'));
-const AWS = AWSXRay.captureAWS(require('aws-sdk'));
+const AWSXRay = require("aws-xray-sdk");
+const https = AWSXRay.captureHTTPs(require("https"));
+const AWS = AWSXRay.captureAWS(require("aws-sdk"));
 const s3 = new AWS.S3();
 
 exports.reverse = (s) => {
@@ -22,17 +22,19 @@ exports.createS3UploadParams = (bucketname, data) => {
 exports.handler = (event, context, callback) => {
   let message = event.Records[0].Sns.Message;
   const { S3Bucket } = process.env;
-  if (typeof message === 'string') {
+  if (typeof message === "string") {
     message = JSON.parse(message);
   }
   const url = message.url || "https://ip-ranges.amazonaws.com/ip-ranges.json";
-  console.log('Going to fetch ' + url);
+  console.log("Going to fetch " + url);
   const options = new URL(url);
   https.get(options, function (res) {
-    res.setEncoding('utf8');
+    res.setEncoding("utf8");
     let rawData = "";
-    res.on('data', (chunk) => { rawData += chunk; });
-    res.on('end', () => {
+    res.on("data", (chunk) => {
+      rawData += chunk;
+    });
+    res.on("end", () => {
       console.log(rawData);
       const params = exports.createS3UploadParams(S3Bucket, rawData);
       s3.upload(params, function (err) {

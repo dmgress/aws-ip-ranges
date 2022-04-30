@@ -12,4 +12,4 @@ In addition to those steps you need to enable delivery status on the topic. Deli
 
 ## TODO
 
-* Create AWS CloudFormation template to deploy stack with SNS topic to work on cross-account notification issues
+- Create AWS CloudFormation template to deploy stack with SNS topic to work on cross-account notification issues

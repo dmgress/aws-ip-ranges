@@ -14,4 +14,4 @@ rules:
   prefer-const: [warn]
   no-use-before-define: [warn]
   prefer-destructuring: [error]
-  "n/no-unpublished-require": [error, { allowModules: ["aws-sdk"]}]
+  "n/no-unpublished-require": [error, { allowModules: ["aws-sdk"] }]

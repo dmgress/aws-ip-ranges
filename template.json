@@ -13,19 +13,17 @@
           "Version": "2012-10-17",
           "Statement": [
             {
-              "Action": [
-                "sts:AssumeRole"
-              ],
+              "Action": ["sts:AssumeRole"],
               "Effect": "Allow",
               "Principal": {
-                "Service": [
-                  "lambda.amazonaws.com"
-                ]
+                "Service": ["lambda.amazonaws.com"]
               }
             }
           ]
         },
-        "ManagedPolicyArns": [ "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole" ],
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        ],
         "Policies": [
           {
             "PolicyName": "root",
@@ -36,10 +34,16 @@
                   "Action": "*",
                   "Resource": [
                     {
-                      "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" } ] ]
+                      "Fn::Join": [
+                        "",
+                        ["arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" }]
+                      ]
                     },
                     {
-                      "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" }, "/*" ] ]
+                      "Fn::Join": [
+                        "",
+                        ["arn:aws:s3:::", { "Ref": "IPRangesS3Bucket" }, "/*"]
+                      ]
                     }
                   ],
                   "Effect": "Allow"
@@ -63,10 +67,7 @@
       "Type": "AWS::Lambda::Alias",
       "Properties": {
         "FunctionVersion": {
-          "Fn::GetAtt": [
-            "Version1",
-            "Version"
-          ]
+          "Fn::GetAtt": ["Version1", "Version"]
         },
         "FunctionName": {
           "Ref": "StoreIPRangesFunction"
@@ -75,10 +76,7 @@
       }
     },
     "IPRangesSubscription": {
-      "DependsOn": [
-        "StoreIPRangesFnProd",
-        "SNSInvokeLambdaPermission"
-      ],
+      "DependsOn": ["StoreIPRangesFnProd", "SNSInvokeLambdaPermission"],
       "Type": "AWS::SNS::Subscription",
       "Properties": {
         "Endpoint": {
@@ -90,9 +88,9 @@
             ":",
             [
               "arn:aws:sns",
-              {"Ref": "AWS::Region"},
-              {"Ref": "AWSAccountID"},
-              {"Ref": "TopicName"}
+              { "Ref": "AWS::Region" },
+              { "Ref": "AWSAccountID" },
+              { "Ref": "TopicName" }
             ]
           ]
         }
@@ -110,9 +108,9 @@
             ":",
             [
               "arn:aws:sns",
-              {"Ref": "AWS::Region"},
-              {"Ref": "AWSAccountID"},
-              {"Ref": "TopicName"}
+              { "Ref": "AWS::Region" },
+              { "Ref": "AWSAccountID" },
+              { "Ref": "TopicName" }
             ]
           ]
         },
@@ -120,10 +118,7 @@
       }
     },
     "StoreIPRangesFunction": {
-      "DependsOn": [
-        "IPRangesS3Bucket",
-        "IPRangesFnRole"
-      ],
+      "DependsOn": ["IPRangesS3Bucket", "IPRangesFnRole"],
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Environment": {
@@ -136,10 +131,7 @@
         "Handler": "index.handler",
         "Runtime": "nodejs4.3",
         "Role": {
-          "Fn::GetAtt": [
-            "IPRangesFnRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["IPRangesFnRole", "Arn"]
         },
         "Code": {
           "ZipFile": {
