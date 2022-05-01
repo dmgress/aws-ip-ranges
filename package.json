@@ -20,7 +20,7 @@
   },
   "scripts": {
     "test": "nyc --reporter=lcov mocha --timeout=3000",
-    "prepare": "husky install",
+    "prepare": "husky install && chmod ug+x .husky/*",
     "postinstall": "husky install"
   },
   "name": "aws-ip-ranges",
