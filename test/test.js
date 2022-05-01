@@ -39,7 +39,7 @@ const ip_ranges_example = JSON.stringify({
 
 describe("CreateS3UploadParams", function () {
   const tests = [
-    { data: "syncToken: A123", expectedKey: "321-ipranges.json" },
+    { data: '"syncToken": "0123"', expectedKey: "3210-ipranges.json" },
     { data: 'syncToken: "0607"', expectedKey: "7060-ipranges.json" },
     {
       data: ip_ranges_example,
