@@ -5,17 +5,23 @@
   "devDependencies": {
     "aws-sdk": "^2.1115.0",
     "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-mocha": "^10.0.4",
     "eslint-plugin-n": "^15.1.0",
     "eslint-plugin-promise": "^6.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": ">=10",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
+    "prettier": "2.6.2",
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov mocha --timeout=3000"
+    "test": "nyc --reporter=lcov mocha --timeout=3000",
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "name": "aws-ip-ranges",
   "version": "1.0.0",
@@ -28,5 +34,9 @@
   "author": "Daniel Gressmann <dmgressmann@gmail.com>",
   "license": "MIT",
   "private": true,
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.0",
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
 }

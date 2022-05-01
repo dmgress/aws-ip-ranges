@@ -25,7 +25,7 @@ const ip_ranges_example = JSON.stringify({
       region: "region",
       network_border_group: "network_border_group",
       service: "subset",
-    }
+    },
   ],
   ipv6_prefixes: [
     {
@@ -33,7 +33,7 @@ const ip_ranges_example = JSON.stringify({
       region: "region",
       network_border_group: "network_border_group",
       service: "subset",
-    }
+    },
   ],
 });
 
@@ -44,7 +44,7 @@ describe("CreateS3UploadParams", function () {
     {
       data: ip_ranges_example,
       expectedKey: "9876543210-ipranges.json",
-    }
+    },
   ];
 
   // eslint-disable-next-line mocha/no-setup-in-describe
