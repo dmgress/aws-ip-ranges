@@ -6,6 +6,7 @@ extends:
   - eslint:recommended
   - plugin:n/recommended
   - plugin:jest/recommended
+  - plugin:jest/style
   - prettier
 parserOptions:
   ecmaVersion: latest
