@@ -1,18 +1,17 @@
 const { createS3UploadParams, reverse } = require("../index");
-const assert = require("assert");
 
-describe("Reverse", function () {
-  it(`reverses abc correctly`, function () {
-    assert.equal(reverse("abc"), "cba");
+describe("Reverse", () => {
+  it(`reverses abc correctly`, () => {
+    expect(reverse("abc")).toBe("cba");
   });
-  it("reverses abc and removes trailing spaces", function () {
-    assert.equal(reverse("abc "), "cba");
+  it("reverses abc and removes trailing spaces", () => {
+    expect(reverse("abc ")).toBe("cba");
   });
-  it("reverses abc and removes leading spaces", function () {
-    assert.equal(reverse(" abc"), "cba");
+  it("reverses abc and removes leading spaces", () => {
+    expect(reverse(" abc")).toBe("cba");
   });
-  it("reverses abc and keeps spaces between non-space characters", function () {
-    assert.equal(reverse("ab c"), "c ba");
+  it("reverses abc and keeps spaces between non-space characters", () => {
+    expect(reverse("ab c")).toBe("c ba");
   });
 });
 
@@ -37,7 +36,7 @@ const ip_ranges_example = JSON.stringify({
   ],
 });
 
-describe("CreateS3UploadParams", function () {
+describe("CreateS3UploadParams", () => {
   const tests = [
     { data: '"syncToken": "0123"', expectedKey: "3210-ipranges.json" },
     { data: 'syncToken: "0607"', expectedKey: "7060-ipranges.json" },
@@ -47,11 +46,10 @@ describe("CreateS3UploadParams", function () {
     },
   ];
 
-  // eslint-disable-next-line mocha/no-setup-in-describe
   tests.forEach(({ data, expectedKey }) => {
-    it(`Creates correct object key for the data`, function () {
+    it(`Creates correct object key for the data`, () => {
       const actual = createS3UploadParams("testbucket", data);
-      assert.equal(actual.Key, expectedKey);
+      expect(actual.Key).toBe(expectedKey);
     });
   });
 });
