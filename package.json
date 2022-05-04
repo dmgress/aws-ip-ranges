@@ -1,34 +1,6 @@
 {
-  "dependencies": {
-    "aws-xray-sdk": "3.3.5"
-  },
-  "devDependencies": {
-    "aws-sdk": "^2.1115.0",
-    "eslint": "^8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.1.5",
-    "eslint-plugin-n": "^15.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "husky": "^7.0.0",
-    "jest": "^28.0.3",
-    "lint-staged": ">=10",
-    "mocha": "^9.2.2",
-    "nyc": "^15.1.0",
-    "prettier": "2.6.2",
-    "uuid": "^8.3.2"
-  },
-  "scripts": {
-    "test": "jest --coverage",
-    "prepare": "husky install && chmod ug+x .husky/*",
-    "postinstall": "husky install"
-  },
   "name": "aws-ip-ranges",
   "version": "1.0.0",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "description": "AWS Lambda function to collect IP ranges",
   "main": "index.js",
   "repository": "git@github.com:dmgress/aws-ip-ranges.git",
@@ -36,6 +8,30 @@
   "license": "MIT",
   "private": true,
   "packageManager": "yarn@3.2.0",
+  "dependencies": {
+    "aws-xray-sdk": "3.3.5"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1127.0",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-n": "^15.2.0",
+    "husky": "^7.0.4",
+    "jest": "^28.0.3",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
+  },
+  "scripts": {
+    "lint": "eslint *.js test/",
+    "postinstall": "husky install",
+    "prepare": "husky install && chmod ug+x .husky/*",
+    "test": "jest --coverage --runInBand"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
