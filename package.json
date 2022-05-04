@@ -8,10 +8,11 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-mocha": "^10.0.4",
+    "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-n": "^15.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "husky": "^7.0.0",
+    "jest": "^28.0.3",
     "lint-staged": ">=10",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
@@ -19,7 +20,7 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov mocha --timeout=3000",
+    "test": "jest --coverage",
     "prepare": "husky install && chmod ug+x .husky/*",
     "postinstall": "husky install"
   },

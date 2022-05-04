@@ -5,7 +5,8 @@ env:
 extends:
   - eslint:recommended
   - plugin:n/recommended
-  - plugin:mocha/recommended
+  - plugin:jest/recommended
+  - plugin:jest/style
   - prettier
 parserOptions:
   ecmaVersion: latest
