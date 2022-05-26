@@ -16,15 +16,17 @@
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
     "husky": "^7.0.4",
     "jest": "^28.0.3",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2"
   },
   "scripts": {
-    "lint": "eslint *.js test/",
+    "lint": "eslint *.js test/ && prettier --check --loglevel warn *.js test/",
     "postinstall": "husky install",
     "prepare": "husky install && chmod ug+x .husky/*",
     "test": "jest --coverage --runInBand"
@@ -35,5 +37,14 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "!**/test/**"
+    ]
   }
 }
