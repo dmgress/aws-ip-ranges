@@ -8,6 +8,10 @@ function update_ip_ranges {
     HUSKY=0 GIT_AUTHOR_DATE="$FILE_MTIME" GIT_COMMITTER_DATE="$FILE_MTIME" git commit -S -m "Updated ip-ranges.json on $FILE_MTIME"
 }
 
+trap "rm ./lastcommit.tmp" EXIT
+
+touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
+
 while read FILE
     do update_ip_ranges $FILE
-done < <(ls -tr ipranges-sync/*.json)
+done < <(find ./ipranges-sync -type f -name '*.json' -newer ./lastcommit.tmp   | xargs --no-run-if-empty ls -tr)
