@@ -12,9 +12,9 @@ trap "rm ./lastcommit.tmp" EXIT
 
 touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
 echo last commit on ip-rangs.json at 
-cat lastcommit.tmp
+stat lastcommit.tmp
 
 while read FILE
-    processing ${FILE} as update
+    echo processing ${FILE} as update
     do update_ip_ranges $FILE
 done < <(find ./ipranges-sync -type f -name '*.json' -newer ./lastcommit.tmp   | xargs --no-run-if-empty ls -tr)
