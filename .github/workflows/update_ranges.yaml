@@ -1,0 +1,22 @@
+name: Update IP Ranges
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-ranges:
+    runs-on: ubuntu-latest
+    name: Sync S3 bucket
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ vars.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+          role-duration-seconds: 1200
+          role-session-name: MySessionName
+      - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr .\ipranges-sync\
+      - run: git checkout -b update-ranges
+      - run: ./history.sh
+      - run: git push origin HEAD
