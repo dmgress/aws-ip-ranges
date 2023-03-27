@@ -2,12 +2,16 @@ name: Update IP Ranges
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 1-5'
 
 jobs:
   update-ranges:
     runs-on: ubuntu-latest
-    name: Sync S3 bucket
+    name: Update ranges
     steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -16,7 +20,13 @@ jobs:
           aws-region: eu-west-1
           role-duration-seconds: 1200
           role-session-name: MySessionName
-      - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr .\ipranges-sync\
+      - name: Cache IP Ranges
+        id: cache-ipranges
+        uses: actions/cache@v3
+        with:
+          path: ./ipranges-sync/
+          key: ${{ runner.os }}-ipranges
+      - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr ./ipranges-sync/
       - run: git checkout -b update-ranges
       - run: ./history.sh
       - run: git push origin HEAD
