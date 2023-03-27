@@ -9,7 +9,6 @@ jobs:
       matrix:
         node:
           - 14
-          - 16
           - 17
     name: codacy-coverage-reporter
     steps:
