@@ -6,8 +6,10 @@ on:
 jobs:
   update-ranges:
     runs-on: ubuntu-latest
-    name: Sync S3 bucket
+    name: Update ranges
     steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
