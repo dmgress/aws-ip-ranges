@@ -27,6 +27,9 @@ jobs:
           path: ./ipranges-sync/
           key: ${{ runner.os }}-ipranges
       - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr ./ipranges-sync/
-      - run: git checkout -b update-ranges
-      - run: ./history.sh
-      - run: git push origin HEAD
+      - run: |
+          git checkout -b update-ranges
+          git config --global user.name "dmgress[update_ranges]"
+          git config --global user.email "dmgress@users.noreply.github.com"
+          ./history.sh
+          git push origin HEAD
