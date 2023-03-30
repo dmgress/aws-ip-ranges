@@ -27,6 +27,11 @@ jobs:
           path: ./ipranges-sync/
           key: ${{ runner.os }}-ipranges
       - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr ./ipranges-sync/
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+         with:
+          key: ${{ secrets.ACTIONS_PRIVATE_KEY }}
+          known_hosts: unnecessary
       - run: |
           git checkout -b update-ranges
           git config --global user.name "dmgress[update_ranges]"

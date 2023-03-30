@@ -2,10 +2,12 @@
 
 function update_ip_ranges {
     FILE=$1
-    FILE_MTIME=$(stat --printf '%y' $FILE)
-    jq . $FILE > ./ip-ranges.json
-    git add ./ip-ranges.json
-    HUSKY=0 GIT_AUTHOR_DATE="$FILE_MTIME" GIT_COMMITTER_DATE="$FILE_MTIME" git commit -m "Updated ip-ranges.json on $FILE_MTIME"
+    if [ -n "$FILE" ]; then
+        FILE_MTIME=$(stat --printf '%y' $FILE)
+        jq . $FILE > ./ip-ranges.json
+        git add ./ip-ranges.json
+        HUSKY=0 GIT_AUTHOR_DATE="$FILE_MTIME" GIT_COMMITTER_DATE="$FILE_MTIME" git commit -m "Updated ip-ranges.json on $FILE_MTIME"
+    fi
 }
 
 trap "rm ./lastcommit.tmp" EXIT
@@ -14,7 +16,13 @@ touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
 echo last commit on ip-rangs.json at 
 stat lastcommit.tmp
 
-while read FILE
+(find ./ipranges-sync -type f -name '*.json' -newer ./lastcommit.tmp   | xargs --no-run-if-empty ls -tr) > FOUND_FILES
+
+echo '---DEBUG---' >> DEBUG_FOUND
+cat FOUND_FILES >> DEBUG_FOUND
+echo '---DEBUG---' >> DEBUG_FOUND
+
+while read -r FILE; do
     echo processing ${FILE} as update
-    do update_ip_ranges $FILE
-done < <(find ./ipranges-sync -type f -name '*.json' -newer ./lastcommit.tmp   | xargs --no-run-if-empty ls -tr)
+    update_ip_ranges $FILE
+done < FOUND_FILES
