@@ -34,6 +34,7 @@ jobs:
           known_hosts: unnecessary
       - run: |
           git checkout -B update-ranges
+          git pull
           git config --global user.name "dmgress[update_ranges]"
           git config --global user.email "dmgress@users.noreply.github.com"
           ./history.sh
