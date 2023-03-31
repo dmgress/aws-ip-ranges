@@ -33,7 +33,7 @@ jobs:
           key: ${{ secrets.ACTIONS_PRIVATE_KEY }}
           known_hosts: unnecessary
       - run: |
-          git checkout -b update-ranges
+          git checkout -B update-ranges
           git config --global user.name "dmgress[update_ranges]"
           git config --global user.email "dmgress@users.noreply.github.com"
           ./history.sh
