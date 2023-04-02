@@ -16,7 +16,7 @@ jobs:
         id: last-commit-result
         with:
           script: |
-            return github.rest.repost.listCommits({
+            return github.rest.repos.listCommits({
                 "owner": "dmgress",
                 "repo": "aws-ip-ranges",
                 "path": "ip-ranges.json"
