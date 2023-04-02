@@ -16,7 +16,7 @@ jobs:
         id: last-commit-result
         with:
           script: |
-            const commits = github.rest.repos.listCommits({
+            const commits = await github.rest.repos.listCommits({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 path: "ip-ranges.json"
