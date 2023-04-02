@@ -23,7 +23,9 @@ jobs:
                 per_page: 5
               });
             console.log(commits);
-            return commits.data[0].commit.author.date;
+            const lastcommit = commits.data[0].commit.author.date;
+            console.log('Last commit on:' + lastcommit)
+            return lastcommit;
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
