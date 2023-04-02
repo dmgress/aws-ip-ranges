@@ -19,10 +19,11 @@ jobs:
             const commits = await github.rest.repos.listCommits({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                path: "ip-ranges.json"
+                path: "ip-ranges.json",
+                per_page: 5
               });
             console.log(commits);
-            return commits[0].commit.author.date;
+            return commits.data[0].commit.author.date;
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
