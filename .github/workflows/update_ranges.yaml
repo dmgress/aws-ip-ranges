@@ -16,11 +16,13 @@ jobs:
         id: last-commit-result
         with:
           script: |
-            return github.rest.repos.listCommits({
-                "owner": "dmgress",
-                "repo": "aws-ip-ranges",
-                "path": "ip-ranges.json"
-              })[0].commit.author.date;
+            const commits = github.rest.repos.listCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: "ip-ranges.json"
+              });
+            console.log(commits);
+            return commits[0].commit.author.date;
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
