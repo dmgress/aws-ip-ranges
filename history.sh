@@ -14,7 +14,7 @@ function update_ip_ranges {
 
 trap "rm ./lastcommit.tmp" EXIT
 
-if [ -z "$LAST_COMMITTED" ]; then
+if [ -n "$LAST_COMMITTED" ]; then
     touch --date "$LAST_COMMITTED" lastcommit.tmp
 else
     touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
