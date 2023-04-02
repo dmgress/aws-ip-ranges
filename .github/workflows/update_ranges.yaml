@@ -1,6 +1,7 @@
 name: Update IP Ranges
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '0 4 * * 1-5'
@@ -10,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Update ranges
     steps:
+      - name: Find last commit
+        uses: actions/github-script@v6
+        id: last-commit-result
+        script: |
+          return github.rest.repost.listCommits({
+              "owner": "dmgress",
+              "repo": "aws-ip-ranges",
+              "path": "ip-ranges.json"
+            })[0].commit.author.date;
       - name: Check out repo
         uses: actions/checkout@v3
       - name: Configure AWS Credentials
@@ -37,5 +47,5 @@ jobs:
           git pull
           git config --global user.name "dmgress[update_ranges]"
           git config --global user.email "dmgress@users.noreply.github.com"
-          ./history.sh
+          ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
           git push origin HEAD
