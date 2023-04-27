@@ -5,11 +5,40 @@ on:
   schedule:
     - cron: '0 4 * * 1-5'
 
+env:
+  updates_branch: 'update-ranges'
+
 jobs:
   update-ranges:
     runs-on: ubuntu-latest
     name: Update ranges
     steps:
+      - name: Check for update-ranges branch
+        uses: actions/github-script@v6
+        id: check-branch-result
+        with:
+          script: |
+            return octokit.rest.repos.getBranch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: context.env.updates_branch
+            }) || false;
+      - name: Find last commit
+        uses: actions/github-script@v6
+        id: last-commit-result
+        with:
+          script: |
+            const commits = await github.rest.repos.listCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: "ip-ranges.json",
+                per_page: 5
+              });
+            console.log(commits);
+            const lastcommit = commits.data[0].commit.author.date;
+            console.log('Last commit on:' + lastcommit)
+            return lastcommit;
+          result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
       - name: Configure AWS Credentials
@@ -33,7 +62,7 @@ jobs:
           key: ${{ secrets.ACTIONS_PRIVATE_KEY }}
           known_hosts: unnecessary
       - run: |
-          git checkout -B update-ranges --track
+          git checkout -B ${{ env.updates_branch }} --track
           git pull
           git config --global user.name "dmgress[update_ranges]"
           git config --global user.email "dmgress@users.noreply.github.com"
