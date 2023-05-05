@@ -1,7 +1,6 @@
 name: Update IP Ranges
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0 4 * * 1-5'
