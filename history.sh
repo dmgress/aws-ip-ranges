@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LAST_COMMITTED="${1%\"}"
+
 function update_ip_ranges {
     FILE=$1
     if [ -n "$FILE" ]; then
@@ -12,7 +14,11 @@ function update_ip_ranges {
 
 trap "rm ./lastcommit.tmp" EXIT
 
-touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
+if [ -n "$LAST_COMMITTED" ]; then
+    touch --date "${LAST_COMMITTED#\"}" lastcommit.tmp
+else
+    touch --date "$(git log -n 1 --pretty='%aD' ./ip-ranges.json)" lastcommit.tmp
+fi
 echo last commit on ip-rangs.json at 
 stat lastcommit.tmp
 
