@@ -63,14 +63,8 @@ jobs:
           git config --global gpg.format ssh
           git config --global user.signingkey ~/.ssh/id_signing
           git config --global commit.gpgsign true
-      - name: Check out repo
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          path: updating-ranges
-      - working-directory: updating-ranges
-        run: |
+      - run: |
           git checkout -B update-ranges --track
           git pull
-          bash -e -x ../history.sh '"${{steps.last-commit-result.outputs.result}}"'
+          bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
           git push origin HEAD
