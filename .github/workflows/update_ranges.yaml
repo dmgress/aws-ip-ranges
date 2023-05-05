@@ -48,11 +48,22 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.ACTIONS_PRIVATE_KEY }}
+          name: id_rsa
           known_hosts: unnecessary
+      - name: Install SSH signing key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.ACTIONS_SIGNING_KEY }}
+          name: id_signing
+          known_hosts: unnecessary
+      - name: Configure git
+        run: |
+          git config --global user.name "dmgress[update_ranges]"
+          git config --global user.email "dmgress@users.noreply.github.com"
+          git config --global gpg.format ssh
+          git config --global user.signingkey ~/.ssh/id_signing
       - run: |
           git checkout -B update-ranges --track
           git pull
-          git config --global user.name "dmgress[update_ranges]"
-          git config --global user.email "dmgress@users.noreply.github.com"
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
           git push origin HEAD
