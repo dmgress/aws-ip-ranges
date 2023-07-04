@@ -1403,7 +1403,7 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: ^6.2.1
-    aws-sdk: ^2.1407.0
+    aws-sdk: ^2.1409.0
     aws-xray-sdk: ^3.5.0
     eslint: ^8.43.0
     eslint-config-prettier: ^8.8.0
@@ -1414,14 +1414,14 @@ __metadata:
     eslint-plugin-promise: ^6.1.1
     husky: ^8.0.3
     jest: ^29.5.0
-    lint-staged: ^13.2.2
+    lint-staged: ^13.2.3
     prettier: ^2.8.8
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1407.0":
-  version: 2.1407.0
-  resolution: "aws-sdk@npm:2.1407.0"
+"aws-sdk@npm:^2.1409.0":
+  version: 2.1409.0
+  resolution: "aws-sdk@npm:2.1409.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -1433,7 +1433,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.5.0
-  checksum: c27ea2316a5e227ce990ca6960e4915461070c518b733e5b44ad4ce3712f116895154ea368e41d98182ab1cb48053d899a6a1e1865fcd1adda0e44fba8700b46
+  checksum: f0046c83916e12b07b28699fd20aea11d78a3f41b1aa6add2ed645f92dec8b424640ef9439596545eba5f3d3a4254c08ce12b7d48504656dd37d2cc9b5ba9994
   languageName: node
   linkType: hard
 
@@ -4035,9 +4035,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^13.2.2":
-  version: 13.2.2
-  resolution: "lint-staged@npm:13.2.2"
+"lint-staged@npm:^13.2.3":
+  version: 13.2.3
+  resolution: "lint-staged@npm:13.2.3"
   dependencies:
     chalk: 5.2.0
     cli-truncate: ^3.1.0
@@ -4054,7 +4054,7 @@ __metadata:
     yaml: ^2.2.2
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: f34f6e2e85e827364658ab8717bf8b35239473c2d4959d746b053a4cf158ac657348444c755820a8ef3eac2d4753a37c52e9db3e201ee20b085f26d2f2fbc9ed
+  checksum: ff51a1e33072f488b28b938ed47323816a1ff278ef6d0e5cbe1704b292773a6c8ce945b504eae3a9b5702917a979523a741f17023e16077bd5fa35be687cc067
   languageName: node
   linkType: hard
 
