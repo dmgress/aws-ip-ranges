@@ -1410,9 +1410,9 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: ^6.2.1
-    aws-sdk: ^2.1414.0
+    aws-sdk: ^2.1417.0
     aws-xray-sdk: ^3.5.0
-    eslint: ^8.44.0
+    eslint: ^8.45.0
     eslint-config-prettier: ^8.8.0
     eslint-config-standard: ^17.1.0
     eslint-plugin-import: ^2.27.5
@@ -1426,9 +1426,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1414.0":
-  version: 2.1414.0
-  resolution: "aws-sdk@npm:2.1414.0"
+"aws-sdk@npm:^2.1417.0":
+  version: 2.1417.0
+  resolution: "aws-sdk@npm:2.1417.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -1440,7 +1440,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.5.0
-  checksum: 43cc9e84acc319820198d69b68d4c972db181e380247f17051c3958a18878211d345ce9eb8d26155ad7eceb3875e4e3f63dd6dc5d9ede65340209b5614b42b6d
+  checksum: c190cabf7ed3f658e39ade60377e04b86c60720cc622a1dbd718178b035dc8c654237e98984a23d67a971e1ebc9250276a38eec7c6c81df3143ac44a20062338
   languageName: node
   linkType: hard
 
@@ -2417,9 +2417,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.44.0":
-  version: 8.44.0
-  resolution: "eslint@npm:8.44.0"
+"eslint@npm:^8.45.0":
+  version: 8.45.0
+  resolution: "eslint@npm:8.45.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.2.0
     "@eslint-community/regexpp": ^4.4.0
@@ -2446,7 +2446,6 @@ __metadata:
     globals: ^13.19.0
     graphemer: ^1.4.0
     ignore: ^5.2.0
-    import-fresh: ^3.0.0
     imurmurhash: ^0.1.4
     is-glob: ^4.0.0
     is-path-inside: ^3.0.3
@@ -2458,11 +2457,10 @@ __metadata:
     natural-compare: ^1.4.0
     optionator: ^0.9.3
     strip-ansi: ^6.0.1
-    strip-json-comments: ^3.1.0
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: d06309ce4aafb9d27d558c8e5e5aa5cba3bbec3ce8ceccbc7d4b7a35f2b67fd40189159155553270e2e6febeb69bd8a3b60d6241c8f5ddc2ef1702ccbd328501
+  checksum: 3e6dcce5cc43c5e301662db88ee26d1d188b22c177b9f104d7eefd1191236980bd953b3670fe2fac287114b26d7c5420ab48407d7ea1c3a446d6313c000009da
   languageName: node
   linkType: hard
 
@@ -3104,7 +3102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-fresh@npm:^3.0.0, import-fresh@npm:^3.2.1":
+"import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
   dependencies:
@@ -5335,7 +5333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strip-json-comments@npm:^3.1.0, strip-json-comments@npm:^3.1.1":
+"strip-json-comments@npm:^3.1.1":
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
