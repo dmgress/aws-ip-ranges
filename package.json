@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "ansi-styles": "^6.2.1",
-    "aws-sdk": "^2.1427.0",
+    "aws-sdk": "^2.1430.0",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
     "eslint-config-standard": "^17.1.0",
