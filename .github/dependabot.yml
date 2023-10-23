@@ -4,11 +4,8 @@ updates:
     schedule:
       interval: "weekly"
     directory: "/"
-    grouping:
-      - group: "production"
-        match:
-          - dependency-type: "all"
-          - update-type: "widen"
-      - group: "development"
-        match:
-          - dependency-type: "dev"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
