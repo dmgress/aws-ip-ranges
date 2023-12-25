@@ -1470,14 +1470,14 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: ^6.2.1
-    aws-sdk: ^2.1522.0
+    aws-sdk: ^2.1525.0
     aws-xray-sdk: ^3.5.3
     eslint: ^8.56.0
     eslint-config-prettier: ^9.1.0
     eslint-config-standard: ^17.1.0
     eslint-plugin-import: ^2.29.1
     eslint-plugin-jest: ^27.6.0
-    eslint-plugin-n: ^16.4.0
+    eslint-plugin-n: ^16.5.0
     eslint-plugin-promise: ^6.1.1
     husky: ^8.0.3
     jest: ^29.7.0
@@ -1486,9 +1486,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1522.0":
-  version: 2.1522.0
-  resolution: "aws-sdk@npm:2.1522.0"
+"aws-sdk@npm:^2.1525.0":
+  version: 2.1525.0
+  resolution: "aws-sdk@npm:2.1525.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -1500,7 +1500,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.5.0
-  checksum: 898f28685cf4f03733152e6ce3835eb08cdb2b8d3d446baa29c7e0b8fd5c091509fc17c54491c3100fec9653faf59ea68b654f0288fc997eee1eeb49d9948940
+  checksum: dacbe060c99bf6cc7677e30c553883e7c4ca6dd2a26cfa4b20bd6dbec0ad2b272aa054ddb6421badf80a5454d9c475c1094a4eccbdfb1754b092feacff578665
   languageName: node
   linkType: hard
 
@@ -2446,9 +2446,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-n@npm:^16.4.0":
-  version: 16.4.0
-  resolution: "eslint-plugin-n@npm:16.4.0"
+"eslint-plugin-n@npm:^16.5.0":
+  version: 16.5.0
+  resolution: "eslint-plugin-n@npm:16.5.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.4.0
     builtins: ^5.0.1
@@ -2462,7 +2462,7 @@ __metadata:
     semver: ^7.5.3
   peerDependencies:
     eslint: ">=7.0.0"
-  checksum: de5b2ca4586180c9ec2cbd21806dbc8d6bf409a5e83d540fa2f4a1db5014b0cb0c65f6e53184a58069b6f6e48d79ed9bb2bd3b86d7f1b6b3847d795157ccf951
+  checksum: 5914ae71e10d8ac48aefc7090c79e10a7628f81c9dcdce72035f6c9f126b176141fc3d5951de0ff215056cdd588e843427a4ace4089ee31405fee6c48569bd98
   languageName: node
   linkType: hard
 
