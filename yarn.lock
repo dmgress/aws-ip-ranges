@@ -1471,7 +1471,7 @@ __metadata:
   dependencies:
     ansi-styles: ^6.2.1
     aws-sdk: ^2.1562.0
-    aws-xray-sdk: ^3.5.3
+    aws-xray-sdk: ^3.5.4
     eslint: ^8.56.0
     eslint-config-prettier: ^9.1.0
     eslint-config-standard: ^17.1.0
@@ -1504,9 +1504,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-xray-sdk-core@npm:3.5.3":
-  version: 3.5.3
-  resolution: "aws-xray-sdk-core@npm:3.5.3"
+"aws-xray-sdk-core@npm:3.5.4":
+  version: 3.5.4
+  resolution: "aws-xray-sdk-core@npm:3.5.4"
   dependencies:
     "@aws-sdk/types": ^3.4.1
     "@smithy/service-error-classification": ^2.0.4
@@ -1514,52 +1514,52 @@ __metadata:
     atomic-batcher: ^1.0.2
     cls-hooked: ^4.2.2
     semver: ^7.5.3
-  checksum: 5e4dc5ae8b48808d63c09f4fdad928a6daad24bb00b29293c84472259f9b1cfee1919ec12eacb0ff62a4f19d8e07bc94d67398255bf5fe900345ad3d8443961f
+  checksum: f3da87551afc88f72b822d79b12890ea1fd9d05d3a4d47c4ec7dace62a25c84e80caa96babf28f0efffb57defa48c9003c48482124930c95f3effb12fc09de1e
   languageName: node
   linkType: hard
 
-"aws-xray-sdk-express@npm:3.5.3":
-  version: 3.5.3
-  resolution: "aws-xray-sdk-express@npm:3.5.3"
+"aws-xray-sdk-express@npm:3.5.4":
+  version: 3.5.4
+  resolution: "aws-xray-sdk-express@npm:3.5.4"
   dependencies:
     "@types/express": "*"
   peerDependencies:
-    aws-xray-sdk-core: ^3.5.3
-  checksum: fc6a22cc1e6433384ddb49334e6ab5c3f5dc533f76c9f3a0d717ed116d03d729e6c978c40a9f7c8cc85df8e5000e0c8d3984cb5fe3dd4e03fc43a342559bb375
+    aws-xray-sdk-core: ^3.5.4
+  checksum: e900d4fc23ba65b3852a5adc0997fadbdc08a3841107e00aedb8d572972a73f5a67b36047142c68a054e7fc7046ef8fc8c007be54e1f3ec57ec6fea69a5874b6
   languageName: node
   linkType: hard
 
-"aws-xray-sdk-mysql@npm:3.5.3":
-  version: 3.5.3
-  resolution: "aws-xray-sdk-mysql@npm:3.5.3"
+"aws-xray-sdk-mysql@npm:3.5.4":
+  version: 3.5.4
+  resolution: "aws-xray-sdk-mysql@npm:3.5.4"
   dependencies:
     "@types/mysql": "*"
   peerDependencies:
-    aws-xray-sdk-core: ^3.5.3
-  checksum: 60c568f91629350086dd936eb4f54bd9d04ad760bd82e5988dd1c88f12fb9ae0d6bd79b382440769ad8f8d406a1d09fc905788066d00683068e70d240ab4bddd
+    aws-xray-sdk-core: ^3.5.4
+  checksum: 3b685ba015e63fa7e8cdf0967b3fbdd004fc7930d659c586e0083d6c9177999f6ac914486bf46ccba15fbce8d04e1430a9362e39f412cfc87e452c5dad0ae4e0
   languageName: node
   linkType: hard
 
-"aws-xray-sdk-postgres@npm:3.5.3":
-  version: 3.5.3
-  resolution: "aws-xray-sdk-postgres@npm:3.5.3"
+"aws-xray-sdk-postgres@npm:3.5.4":
+  version: 3.5.4
+  resolution: "aws-xray-sdk-postgres@npm:3.5.4"
   dependencies:
     "@types/pg": "*"
   peerDependencies:
-    aws-xray-sdk-core: ^3.5.3
-  checksum: 8cc0b8683797ec01bd7f1b6491c869624af2b38619f39718f4ecabe85c42c87fd8173eb5a8fe4ea999d13bb097597fafa5edd391d06881d6d6a3389dc6db8544
+    aws-xray-sdk-core: ^3.5.4
+  checksum: 28e766f2c68711dd4dfceddf0879c6c654c060d2b5e493c711a13fcec7efbb1cdd2dc8e9fd815e65e6d782bcd9dbed848adb1f1d2ff41b4bd137682eaaef25eb
   languageName: node
   linkType: hard
 
-"aws-xray-sdk@npm:^3.5.3":
-  version: 3.5.3
-  resolution: "aws-xray-sdk@npm:3.5.3"
+"aws-xray-sdk@npm:^3.5.4":
+  version: 3.5.4
+  resolution: "aws-xray-sdk@npm:3.5.4"
   dependencies:
-    aws-xray-sdk-core: 3.5.3
-    aws-xray-sdk-express: 3.5.3
-    aws-xray-sdk-mysql: 3.5.3
-    aws-xray-sdk-postgres: 3.5.3
-  checksum: fec78f30aec8c37f2837d5179ae796ec69e0756b16119fe1ef7d3cd3d4b7f26024b75a3d0aa03216a97af504b6e519dffb68c74a1598537b6571c0eba08a75cf
+    aws-xray-sdk-core: 3.5.4
+    aws-xray-sdk-express: 3.5.4
+    aws-xray-sdk-mysql: 3.5.4
+    aws-xray-sdk-postgres: 3.5.4
+  checksum: 8307df4f55bf33052781e976e4fa4df4c2357d8b372cfa229cec73602ccbc642bd0fe3458154403a7a9fe72a788bee72ca10a9e63bb05a39af0b0ccfe55bae62
   languageName: node
   linkType: hard
 
