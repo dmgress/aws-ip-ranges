@@ -79,4 +79,4 @@ jobs:
           git config --global commit.gpgsign true
       - run: |
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
-          git push origin/update-ranges HEAD
+          git push origin update-ranges
