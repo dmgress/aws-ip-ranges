@@ -77,6 +77,9 @@ jobs:
           git config --global gpg.format ssh
           git config --global user.signingkey ~/.ssh/id_signing
           git config --global commit.gpgsign true
-      - run: |
+      - name: Process latest updates to IP ranges
+        run: |
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
+      - name: Push updates to update-ranges branch
+        run: |
           git push origin update-ranges
