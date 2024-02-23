@@ -31,13 +31,13 @@ jobs:
         id: ref-to-pull
         with:
           script: |
-            const base_ref = await github.rest.git.getRef({
+            const base_ref = await github.rest.git.listMatchingRefs({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 ref: 'heads/update-ranges'
               });
               console.log(base_ref);
-              return base_ref ? 'update-ranges' : 'master';
+              return len(base_ref.data) > 0 ? 'update-ranges' : 'master';
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
