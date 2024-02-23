@@ -26,8 +26,23 @@ jobs:
             console.log('Last commit on:' + lastcommit)
             return lastcommit;
           result-encoding: string
+      - name: Find ref to pull
+        uses: actions/github-script@v6
+        id: ref-to-pull
+        with:
+          script: |
+            const base_ref = await github.rest.git.getRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: 'heads/update-ranges'
+              });
+              console.log(base_ref);
+              return base_ref ? 'update-ranges' : 'master';
+          result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
+        with:
+          ref: ${{steps.ref-to-pull.outputs.result}}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -62,10 +77,9 @@ jobs:
           git config --global gpg.format ssh
           git config --global user.signingkey ~/.ssh/id_signing
           git config --global commit.gpgsign true
-      - run: |
-          git fetch --all
-          git branch --all
-          git checkout -B update-ranges --track
-          git pull
+      - name: Process latest updates to IP ranges
+        run: |
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
-          git push origin HEAD
+      - name: Push updates to update-ranges branch
+        run: |
+          git push origin update-ranges
