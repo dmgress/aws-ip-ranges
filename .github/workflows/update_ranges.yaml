@@ -63,6 +63,8 @@ jobs:
           git config --global user.signingkey ~/.ssh/id_signing
           git config --global commit.gpgsign true
       - run: |
+          git fetch --all
+          git branch --all
           git checkout -B update-ranges --track
           git pull
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
