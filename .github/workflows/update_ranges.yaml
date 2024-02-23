@@ -31,7 +31,7 @@ jobs:
             const commits = await github.rest.repos.listCommits({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                sha: ${{steps.ref-to-pull.outputs.result}},
+                sha: "heads/${{steps.ref-to-pull.outputs.result}}",
                 path: "ip-ranges.json",
                 per_page: 5
               });
