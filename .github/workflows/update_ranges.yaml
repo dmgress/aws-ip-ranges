@@ -54,7 +54,7 @@ jobs:
           role-session-name: MySessionName
       - name: Cache IP Ranges
         id: cache-ipranges
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./ipranges-sync/
           key: ${{ runner.os }}-ipranges
