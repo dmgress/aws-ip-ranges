@@ -83,4 +83,4 @@ jobs:
           bash -e -x ./history.sh '"${{steps.last-commit-result.outputs.result}}"'
       - name: Push updates to update-ranges branch
         run: |
-          git push origin update-ranges
+          git push origin HEAD:update-ranges
