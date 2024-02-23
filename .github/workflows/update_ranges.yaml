@@ -10,22 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Update ranges
     steps:
-      - name: Find last commit
-        uses: actions/github-script@v6
-        id: last-commit-result
-        with:
-          script: |
-            const commits = await github.rest.repos.listCommits({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                path: "ip-ranges.json",
-                per_page: 5
-              });
-            console.log(commits);
-            const lastcommit = commits.data[0].commit.author.date;
-            console.log('Last commit on:' + lastcommit)
-            return lastcommit;
-          result-encoding: string
       - name: Find ref to pull
         uses: actions/github-script@v6
         id: ref-to-pull
@@ -37,7 +21,24 @@ jobs:
                 ref: 'heads/update-ranges'
               });
               console.log(base_ref);
-              return len(base_ref.data) > 0 ? 'update-ranges' : 'master';
+              return base_ref.data.length > 0 ? 'update-ranges' : 'master';
+          result-encoding: string
+      - name: Find last commit
+        uses: actions/github-script@v6
+        id: last-commit-result
+        with:
+          script: |
+            const commits = await github.rest.repos.listCommits({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha: ${{steps.ref-to-pull.outputs.result}},
+                path: "ip-ranges.json",
+                per_page: 5
+              });
+            console.log(commits.data);
+            const lastcommit = commits.data[0].commit.author.date;
+            console.log('Last commit on:' + lastcommit)
+            return lastcommit;
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
