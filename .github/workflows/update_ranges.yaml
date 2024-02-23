@@ -37,7 +37,7 @@ jobs:
                 ref: 'heads/update-ranges'
               });
               console.log(base_ref);
-              return base_ref ? base_ref.ref : 'master';
+              return base_ref ? 'update-ranges' : 'master';
           result-encoding: string
       - name: Check out repo
         uses: actions/checkout@v3
