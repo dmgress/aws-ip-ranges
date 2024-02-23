@@ -41,7 +41,7 @@ jobs:
             return lastcommit;
           result-encoding: string
       - name: Check out repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{steps.ref-to-pull.outputs.result}}
       - name: Configure AWS Credentials
