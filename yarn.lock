@@ -1470,7 +1470,7 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: ^6.2.1
-    aws-sdk: ^2.1581.0
+    aws-sdk: ^2.1584.0
     aws-xray-sdk: ^3.5.4
     eslint: ^8.57.0
     eslint-config-prettier: ^9.1.0
@@ -1479,16 +1479,16 @@ __metadata:
     eslint-plugin-jest: ^27.9.0
     eslint-plugin-n: ^16.6.2
     eslint-plugin-promise: ^6.1.1
-    husky: ^8.0.3
+    husky: ^9.0.11
     jest: ^29.7.0
     lint-staged: ^15.2.2
     prettier: ^3.2.5
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1581.0":
-  version: 2.1581.0
-  resolution: "aws-sdk@npm:2.1581.0"
+"aws-sdk@npm:^2.1584.0":
+  version: 2.1584.0
+  resolution: "aws-sdk@npm:2.1584.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -1500,7 +1500,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.6.2
-  checksum: 6efe666424072331c30a4b6b604a73e1a57716d1fe728f0febf6bec187bac17377fe0f07f0ca67bdd6854c07b8ec30f49cc057c85a8d13eff06f9bf022fa482f
+  checksum: f9f89eabefbd5c75d49da5bc35063cb8e92d51899fc067a5ddd94f319511515659c22068b71d7d2151f4c31ab4abf30476efec0490bb158c2645b06a87051992
   languageName: node
   linkType: hard
 
@@ -3207,12 +3207,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "husky@npm:8.0.3"
+"husky@npm:^9.0.11":
+  version: 9.0.11
+  resolution: "husky@npm:9.0.11"
   bin:
-    husky: lib/bin.js
-  checksum: 837bc7e4413e58c1f2946d38fb050f5d7324c6f16b0fd66411ffce5703b294bd21429e8ba58711cd331951ee86ed529c5be4f76805959ff668a337dbfa82a1b0
+    husky: bin.mjs
+  checksum: 1aebc3334dc7ac6288ff5e1fb72cfb447cfa474e72cf7ba692e8c5698c573ab725c28c6a5088c9f8e6aca5f47d40fa7261beffbc07a4d307ca21656dc4571f07
   languageName: node
   linkType: hard
 
