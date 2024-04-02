@@ -9,7 +9,7 @@
   "private": true,
   "packageManager": "yarn@3.5.0",
   "dependencies": {
-    "aws-xray-sdk": "^3.5.4"
+    "aws-xray-sdk": "^3.6.0"
   },
   "devDependencies": {
     "ansi-styles": "^6.2.1",
