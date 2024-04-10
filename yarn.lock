@@ -1470,7 +1470,7 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: ^6.2.1
-    aws-sdk: ^2.1591.0
+    aws-sdk: ^2.1596.0
     aws-xray-sdk: ^3.6.0
     eslint: ^8.57.0
     eslint-config-prettier: ^9.1.0
@@ -1486,9 +1486,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1591.0":
-  version: 2.1591.0
-  resolution: "aws-sdk@npm:2.1591.0"
+"aws-sdk@npm:^2.1596.0":
+  version: 2.1596.0
+  resolution: "aws-sdk@npm:2.1596.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -1500,7 +1500,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.6.2
-  checksum: 805204e18682b9bb2f6de983bfbcad5046226406688bd1ebef544a5b1eeff7cc2a4143c20d87873a80c483c2fe5c4a97bf8147d6a4e39bf3ad0b32d11283e3cc
+  checksum: e52e9d09684f82218fdfd943a29446698d7d7748d95d45c57dde90a3961fb13cb676f2b4e968db94773d94e0bc7ad43b40345ce75230519da18094532704dfa4
   languageName: node
   linkType: hard
 
