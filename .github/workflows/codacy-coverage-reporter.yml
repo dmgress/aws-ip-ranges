@@ -17,8 +17,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "${{ matrix.node }}"
+          cache: yarn
       - run: corepack enable
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
       - run: yarn test
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1
