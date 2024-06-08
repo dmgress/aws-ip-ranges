@@ -8,8 +8,9 @@ jobs:
     strategy:
       matrix:
         node:
-          - 14
-          - 17
+          - 20
+          - 22
+          - 24
     name: codacy-coverage-reporter
     steps:
       - uses: actions/checkout@v4
