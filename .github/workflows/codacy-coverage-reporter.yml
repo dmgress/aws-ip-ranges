@@ -8,15 +8,18 @@ jobs:
     strategy:
       matrix:
         node:
-          - 14
-          - 17
+          - 20
+          - 'lts/*'
+          - 'current'
     name: codacy-coverage-reporter
     steps:
       - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: "${{ matrix.node }}"
-      - run: yarn install
+          cache: yarn
+      - run: yarn install --frozen-lockfile
       - run: yarn test
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1
