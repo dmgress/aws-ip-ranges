@@ -1462,7 +1462,7 @@ __metadata:
   resolution: "aws-ip-ranges@workspace:."
   dependencies:
     ansi-styles: "npm:^6.2.1"
-    aws-sdk: "npm:^2.1637.0"
+    aws-sdk: "npm:^2.1639.0"
     aws-xray-sdk: "npm:^3.6.0"
     eslint: "npm:^9.4.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -1478,9 +1478,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"aws-sdk@npm:^2.1637.0":
-  version: 2.1637.0
-  resolution: "aws-sdk@npm:2.1637.0"
+"aws-sdk@npm:^2.1639.0":
+  version: 2.1639.0
+  resolution: "aws-sdk@npm:2.1639.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -1492,7 +1492,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10/3b9ec95b392592918e9b3e0492b55e8fef99ab12c62dfc2699b03f38f1affdccdd69cf59109e1cc9592c98e984321a53472f0e7afe354bf823b4a51d6ab5de50
+  checksum: 10/130d1b62b2e7c194687253e2fcfcde1929a01be03a4974f53eb74d3df37183fc92bdba5b730faa203735741a32e103f7aaef628832e427fe84203f6492d558f9
   languageName: node
   linkType: hard
 
@@ -4235,15 +4235,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "lru-cache@npm:6.0.0"
-  dependencies:
-    yallist: "npm:^4.0.0"
-  checksum: 10/fc1fe2ee205f7c8855fa0f34c1ab0bcf14b6229e35579ec1fd1079f31d6fc8ef8eb6fd17f2f4d99788d7e339f50e047555551ebd5e434dda503696e7c6591825
-  languageName: node
-  linkType: hard
-
 "lru-cache@npm:^7.7.1":
   version: 7.9.0
   resolution: "lru-cache@npm:7.9.0"
@@ -5188,18 +5179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4":
-  version: 7.5.4
-  resolution: "semver@npm:7.5.4"
-  dependencies:
-    lru-cache: "npm:^6.0.0"
-  bin:
-    semver: bin/semver.js
-  checksum: 10/985dec0d372370229a262c737063860fabd4a1c730662c1ea3200a2f649117761a42184c96df62a0e885e76fbd5dace41087d6c1ac0351b13c0df5d6bcb1b5ac
-  languageName: node
-  linkType: hard
-
-"semver@npm:^7.6.0":
+"semver@npm:^7.3.5, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0":
   version: 7.6.2
   resolution: "semver@npm:7.6.2"
   bin:
