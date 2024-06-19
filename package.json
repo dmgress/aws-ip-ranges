@@ -9,11 +9,11 @@
   "private": true,
   "packageManager": "yarn@4.2.2",
   "dependencies": {
-    "aws-xray-sdk": "^3.6.0"
+    "aws-xray-sdk": "^3.9.0"
   },
   "devDependencies": {
     "ansi-styles": "^6.2.1",
-    "aws-sdk": "^2.1639.0",
+    "aws-sdk": "^2.1644.0",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
