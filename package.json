@@ -14,7 +14,7 @@
   "devDependencies": {
     "ansi-styles": "^6.2.1",
     "aws-sdk": "^2.1692.0",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
@@ -24,7 +24,7 @@
     "husky": "^9.1.7",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.4.1"
+    "prettier": "^3.4.2"
   },
   "scripts": {
     "lint": "eslint *.js test/ && prettier --check --loglevel warn *.js test/",
