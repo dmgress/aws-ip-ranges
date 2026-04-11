@@ -10,7 +10,6 @@ jobs:
         node:
           - 20
           - 'lts/*'
-          - 'current'
     name: codacy-coverage-reporter
     steps:
       - uses: actions/checkout@v6
