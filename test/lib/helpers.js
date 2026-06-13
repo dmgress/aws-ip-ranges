@@ -60,17 +60,13 @@ exports.mockedHttpsGet = () => {
   });
 };
 
-exports.mockS3Instance = class {
+exports.mockS3Client = class {
   constructor() {
     this.expectedError = null;
-    this.upload = jest.fn().mockImplementation((_, c) => {
-      c(this.expectedError);
+    this.send = jest.fn().mockImplementation(async (command) => {
+      if (this.expectedError) {
+        throw this.expectedError;
+      }
     });
-    this.promise = jest.fn();
   }
-
-  // {
-  //   upload: jest.fn().mockImplementation((p,c)=> {c(expectedError)}),
-  //   promise: jest.fn(),
-  // };
 };

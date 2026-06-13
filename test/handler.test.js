@@ -3,7 +3,7 @@ const {
   createValidEvent,
   ip_ranges_example,
   mockedHttpsGet,
-  mockS3Instance,
+  mockS3Client,
 } = require("./lib/helpers");
 const https = require("https");
 
@@ -33,9 +33,12 @@ describe("Handler", () => {
 
   beforeEach(() => {
     jest.resetModules();
-    mockS3 = new mockS3Instance();
-    jest.mock("aws-sdk", () => {
-      return { S3: jest.fn(() => mockS3) };
+    mockS3 = new mockS3Client();
+    jest.mock("@aws-sdk/client-s3", () => {
+      return { 
+        S3Client: jest.fn(() => mockS3),
+        PutObjectCommand: jest.fn((params) => ({ params }))
+      };
     });
     process.env = { ...env };
     process.env.S3Bucket = "s3://mymock.bucket";
@@ -52,7 +55,7 @@ describe("Handler", () => {
     });
 
     expect(https.get.mock.calls).toHaveLength(0);
-    expect(mockS3.upload.mock.calls).toHaveLength(0);
+    expect(mockS3.send.mock.calls).toHaveLength(0);
   });
 
   it("Picks up the url from the message", () => {
@@ -63,7 +66,7 @@ describe("Handler", () => {
     );
   });
 
-  it("Calls back with error when S3 upload fails", () => {
+  it("Calls back with error when S3 upload fails", async () => {
     mockS3.expectedError = {
       stack: "Calls back with error when S3 upload fails",
     };
@@ -73,17 +76,20 @@ describe("Handler", () => {
       gotMessage = message;
     });
 
+    await new Promise(resolve => setTimeout(resolve, 100));
     expect(gotError).toBe(mockS3.expectedError);
     expect(gotMessage).toBe(mockS3.expectedError.stack);
   });
 
-  it("Calls back with success if S3 upload succeeds", () => {
+  it("Calls back with success if S3 upload succeeds", async () => {
     let gotError, gotMessage;
 
     handler(createValidEvent(), null, (err, message) => {
       gotError = err;
       gotMessage = message;
     });
+    
+    await new Promise(resolve => setTimeout(resolve, 100));
     expect(gotError).toBeNull();
     expect(gotMessage).toBe("success");
   });

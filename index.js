@@ -1,6 +1,7 @@
 "use strict";
 
 const AWSXRay = require("aws-xray-sdk");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 
 exports.reverse = (s) => {
   return s.trim().split("").reverse().join("");
@@ -21,10 +22,11 @@ exports.handler = (event, context, callback) => {
   const https = runningInAWSLambda
     ? AWSXRay.captureHTTPs(require("https"))
     : require("https");
-  const AWS = runningInAWSLambda
-    ? AWSXRay.captureAWS(require("aws-sdk"))
-    : require("aws-sdk");
-  const s3 = new AWS.S3();
+  
+  let s3Client = new S3Client({});
+  if (runningInAWSLambda) {
+    s3Client = AWSXRay.captureAWSClient(s3Client);
+  }
 
   let message = event.Records[0].Sns.Message;
   const { S3Bucket } = process.env;
@@ -44,15 +46,15 @@ exports.handler = (event, context, callback) => {
     res.on("data", (chunk) => {
       rawData += chunk;
     });
-    res.on("end", () => {
+    res.on("end", async () => {
       const params = exports.createS3UploadParams(S3Bucket, rawData);
-      s3.upload(params, function (err) {
-        if (err) {
-          callback(err, err.stack); // an error occurred
-        } else {
-          callback(null, "success"); // successful response
-        }
-      });
+      try {
+        const command = new PutObjectCommand(params);
+        await s3Client.send(command);
+        callback(null, "success");
+      } catch (err) {
+        callback(err, err.stack);
+      }
     });
   });
 };
