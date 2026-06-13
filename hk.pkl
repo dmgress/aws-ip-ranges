@@ -22,16 +22,14 @@ local linters = new Mapping<String, Step> {
     }
 }
 
-local precommit_linters = new Mapping<String, Step> {
-    ...linters
-    ["check_conventional_commit"] = Builtins.check_conventional_commit
-}
-
 hooks {
     ["pre-commit"] {
         fix = true
         stash = "git"
-        steps = linters
+        steps = {
+            ["check_conventional_commit"] = Builtins.check_conventional_commit
+            ...linters
+        }
     }
     ["fix"] {
         fix = true
