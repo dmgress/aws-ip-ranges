@@ -1,0 +1,4 @@
+[tools]
+"github:betterleaks/betterleaks" = "latest"
+hk = "latest"
+node = "24"
