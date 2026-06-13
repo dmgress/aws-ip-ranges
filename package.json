@@ -7,7 +7,7 @@
   "author": "Daniel Gressmann <dmgressmann@gmail.com>",
   "license": "MIT",
   "private": true,
-  "packageManager": "yarn@4.2.2",
+  "packageManager": "yarn@4.16.0",
   "dependencies": {
     "aws-xray-sdk": "^3.12.0"
   },
@@ -21,7 +21,6 @@
     "eslint-plugin-jest": "^29.15.2",
     "eslint-plugin-n": "^18.0.1",
     "eslint-plugin-promise": "^7.3.0",
-    "husky": "^9.1.7",
     "jest": "^30.4.2",
     "lint-staged": "^17.0.4",
     "prettier": "^3.8.3"
@@ -31,7 +30,7 @@
     "test": "jest --coverage --runInBand"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=22.0.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
