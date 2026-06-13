@@ -1,0 +1,9 @@
+[tools]
+"github:betterleaks/betterleaks" = "latest"
+hk = "latest"
+node = "24"
+npm = "latest"
+yarn = "latest"
+
+[tasks.test]
+run = "yarn test"
