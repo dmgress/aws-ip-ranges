@@ -28,8 +28,6 @@
   },
   "scripts": {
     "lint": "eslint *.js test/ && prettier --check --loglevel warn *.js test/",
-    "postinstall": "husky install",
-    "prepare": "husky install && chmod ug+x .husky/*",
     "test": "jest --coverage --runInBand"
   },
   "engines": {

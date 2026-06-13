@@ -7,14 +7,24 @@ local linters = new Mapping<String, Step> {
     // ["eslint"] = Builtins.eslint
     // ["ruff"] = Builtins.ruff
     ["betterleaks"] = Builtins.betterleaks
-    ["check_conventional_commit"] = Builtins.check_conventional_commit
-
 
     // Or define custom steps:
     // ["custom"] {
     //     glob = "**/*.py"
     //     check = "mypy {{ files }}"
     // }
+    ["yarn_test"] {
+        glob = List("**/*.js")
+        check = "yarn test"
+    }
+    ["yarn_lint_staged"] {
+        check = "yarn lint-staged"
+    }
+}
+
+local precommit_linters = new Mapping<String, Step> {
+    ...linters
+    ["check_conventional_commit"] = Builtins.check_conventional_commit
 }
 
 hooks {
