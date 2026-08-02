@@ -18,7 +18,7 @@ jobs:
             const base_ref = await github.rest.git.listMatchingRefs({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                ref: 'heads/update-ranges'
+                ref: 'heads/update-ranges_' # FIX ME
               });
               console.log(base_ref);
               return base_ref.data.length > 0 ? 'update-ranges' : 'master';
