@@ -3,7 +3,7 @@ name: Update IP Ranges
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4 * * 1-5'
+    - cron: "0 4 * * 1-5"
 
 jobs:
   update-ranges:
@@ -18,7 +18,7 @@ jobs:
             const base_ref = await github.rest.git.listMatchingRefs({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                ref: 'heads/update-ranges_' # FIX ME
+                ref: 'heads/update-ranges_',
               });
               console.log(base_ref);
               return base_ref.data.length > 0 ? 'update-ranges' : 'master';
@@ -52,13 +52,15 @@ jobs:
           aws-region: eu-west-1
           role-duration-seconds: 1200
           role-session-name: MySessionName
-      - name: Cache IP Ranges
-        id: cache-ipranges
-        uses: actions/cache@v6
-        with:
-          path: ./ipranges-sync/
-          key: ${{ runner.os }}-ipranges
-      - run: aws s3 sync s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr ./ipranges-sync/
+      - name: Download modified files
+        run: |
+          set -eo pipefail  # Fail on any error in the pipeline
+          LAST_COMMIT_EPOCH=$(date -d "${{ steps.last-commit.outputs.result }}" -Iseconds)
+          aws s3api list-objects-v2 \
+            --bucket iprangesproject-iprangess3bucket-1xpm6odtii6lr \
+            --query "Contents[?LastModified>\`$LAST_COMMIT_EPOCH\`].Key" \
+            --output text | \
+          xargs -P 10 -I {} aws s3 cp "s3://iprangesproject-iprangess3bucket-1xpm6odtii6lr/{}" "./ipranges-sync/{}"
       - name: Install SSH key
         uses: shimataro/ssh-key-action@87a8f067114a8ce263df83e9ed5c849953548bc3 # v2.8.1
         with:
