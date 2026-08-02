@@ -3,8 +3,8 @@ import "package://github.com/jdx/hk/releases/download/v1.48.0/hk@1.48.0#/Builtin
 
 local linters = new Mapping<String, Step> {
     // Add linters here. Examples:
-    // ["prettier"] = Builtins.prettier
-    // ["eslint"] = Builtins.eslint
+    ["prettier"] = Builtins.prettier
+    ["eslint"] = Builtins.eslint
     // ["ruff"] = Builtins.ruff
     ["betterleaks"] = Builtins.betterleaks
 
@@ -17,9 +17,9 @@ local linters = new Mapping<String, Step> {
         glob = List("**/*.js")
         check = "yarn test"
     }
-    ["yarn_lint_staged"] {
-        check = "yarn lint-staged"
-    }
+    // ["yarn_lint_staged"] {
+    //     check = "yarn lint-staged"
+    // }
 }
 
 hooks {
@@ -27,8 +27,12 @@ hooks {
         fix = true
         stash = "git"
         steps = {
-            ["check_conventional_commit"] = Builtins.check_conventional_commit
             ...linters
+        }
+    }
+    ["commit-msg"] {
+        steps = {
+            ["check_conventional_commit"] = Builtins.check_conventional_commit
         }
     }
     ["fix"] {
