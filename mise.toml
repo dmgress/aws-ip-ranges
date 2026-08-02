@@ -4,7 +4,12 @@ hk = "latest"
 node = "24"
 npm = "latest"
 "npm:prettier" = "latest"
+python = "3.14.2"
+uv = "latest"
 yarn = "latest"
+
+[env]
+UV_PYTHON = { value = "{{ tools.python.path }}", tools = true }
 
 [tasks.test]
 run = "yarn test"
