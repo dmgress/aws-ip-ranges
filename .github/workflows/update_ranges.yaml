@@ -66,7 +66,7 @@ jobs:
           name: id_rsa
           known_hosts: unnecessary
       - name: Install SSH signing key
-        uses: shimataro/ssh-key-action@v2
+        uses: shimataro/ssh-key-action@87a8f067114a8ce263df83e9ed5c849953548bc3 # v2.8.1
         with:
           key: ${{ secrets.ACTIONS_SIGNING_KEY }}
           name: id_signing
